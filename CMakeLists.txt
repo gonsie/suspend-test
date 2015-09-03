@@ -18,7 +18,9 @@ SET_SOURCE_FILES_PROPERTIES(${CMAKE_CURRENT_BINARY_DIR}/suspend_config.h PROPERT
 # All source files for the model
 SET(suspend_srcs
 	suspend_main.c
-	suspend_driver.c
+	increment_driver.c
+	decrement_driver.c
+	receiver_driver.c
 	suspend_map.c
 	suspend.h
 	suspend_config.h
