@@ -9,13 +9,31 @@
 //   multiple sets can be defined (for multiple LP types)
 tw_lptype suspend_lps[] = {
   {
-    (init_f) suspend_init,
+    (init_f) increment_init,
     (pre_run_f) NULL,
-    (event_f) suspend_event,
-    (revent_f) suspend_event_reverse,
-    (final_f) suspend_final,
+    (event_f) increment_event,
+    (revent_f) increment_event_reverse,
+    (final_f) increment_final,
     (map_f) suspend_map,
-    sizeof(state)
+    sizeof(increment_state)
+  },
+  {
+    (init_f) decrement_init,
+    (pre_run_f) NULL,
+    (event_f) decrement_event,
+    (revent_f) decrement_event_reverse,
+    (final_f) decrement_final,
+    (map_f) suspend_map,
+    sizeof(decrement_state)
+  },
+  {
+    (init_f) receiver_init,
+    (pre_run_f) NULL,
+    (event_f) receiver_event,
+    (revent_f) receiver_event_reverse,
+    (final_f) receiver_final,
+    (map_f) suspend_map,
+    sizeof(receiver_state)
   },
   { 0 },
 };
