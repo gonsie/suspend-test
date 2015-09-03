@@ -24,10 +24,12 @@ typedef struct {
 //   this defines the state of each LP
 typedef struct {
 	int increment_value;
+	int round_count;
 } increment_state;
 
 typedef struct {
 	int decrement_value;
+	int round_count;
 } decrement_state;
 
 typedef struct {
