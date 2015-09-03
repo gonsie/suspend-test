@@ -85,7 +85,7 @@ int suspend_main (int argc, char* argv[]) {
 	// LP0: increment type
 	// LP1: decrement type
 	// LPn: receiver type
-	num_total_lps = 2 + total_receivers;
+	int num_total_lps = 2 + total_receivers;
 	num_lps_per_pe = num_total_lps / tw_nnodes();
 
 	//set up LPs within ROSS
