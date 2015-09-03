@@ -16,7 +16,7 @@ void decrement_init (decrement_state *s, tw_lp *lp) {
   s->round_count = 0;
 
   // Init message to myself
-  tw_event *e = tw_event_new(self, 1, lp);
+  tw_event *e = tw_event_new(self, 2, lp);
   message *msg = tw_event_data(e);
   msg->type = WAKEUP;
   tw_event_send(e);
