@@ -21,12 +21,12 @@ tw_lptype suspend_lps[] = {
 };
 
 //Define command line arguments default values
-unsigned int setting_1 = 0;
+unsigned int total_receivers = 2;
 
 //add your command line opts
 const tw_optdef suspend_opts[] = {
 	TWOPT_GROUP("Suspend Test"),
-	TWOPT_UINT("setting_1", setting_1, "first setting for this model"),
+	TWOPT_UINT("total_receivers", total_receivers, "Number of receiver LPs to create"),
 	TWOPT_END(),
 };
 

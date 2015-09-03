@@ -35,7 +35,7 @@ typedef struct {
 } receiver_state;
 
 //Command Line Argument declarations
-extern unsigned int setting_1;
+extern unsigned int total_receivers;
 
 //Global variables used by both main and driver
 // - this defines the LP types
