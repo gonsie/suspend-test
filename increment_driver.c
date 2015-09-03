@@ -16,7 +16,7 @@ void SWAP (double *a, double *b) {
 //Init function
 // - called once for each LP
 // ! LP can only send messages to itself during init !
-void suspend_init (state *s, tw_lp *lp) {
+void increment_init (state *s, tw_lp *lp) {
   int self = lp->gid;
 
   // init state data
@@ -34,7 +34,7 @@ void suspend_init (state *s, tw_lp *lp) {
 }
 
 //Forward event handler
-void suspend_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
+void increment_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int self = lp->gid;
 
   // initialize the bit field
@@ -75,7 +75,7 @@ void suspend_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 }
 
 //Reverse Event Handler
-void suspend_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
+void increment_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int self = lp->gid;
 
   // undo the state update using the value stored in the 'reverse' message
@@ -103,7 +103,7 @@ void suspend_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 }
 
 //report any final statistics for this LP
-void suspend_final (state *s, tw_lp *lp){
+void increment_final (state *s, tw_lp *lp){
   int self = lp->gid;
   printf("%d handled %d Hello and %d Goodbye messages\n", self, s->rcvd_count_H, s->rcvd_count_G);
 }
