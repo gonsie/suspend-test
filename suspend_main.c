@@ -62,6 +62,8 @@ int suspend_main (int argc, char* argv[]) {
 	//Do some error checking?
 	//Print out some settings?
 
+	g_tw_mapping = ROUND_ROBIN;
+
 	//Custom Mapping
 	/*
 	g_tw_mapping = CUSTOM;
@@ -80,8 +82,11 @@ int suspend_main (int argc, char* argv[]) {
 	// g_tw_nkp
 	// g_tw_synchronization_protocol
 
-	//assume 1 lp per node
-	num_lps_per_pe = 1;
+	// LP0: increment type
+	// LP1: decrement type
+	// LPn: receiver type
+	num_total_lps = 2 + total_receivers;
+	num_lps_per_pe = num_total_lps / tw_nnodes();
 
 	//set up LPs within ROSS
 	tw_define_lps(num_lps_per_pe, sizeof(message));
@@ -89,7 +94,7 @@ int suspend_main (int argc, char* argv[]) {
 
 	// IF there are multiple LP types
 	//    you should define the mapping of GID -> lptype index
-	//g_tw_lp_typemap = &suspend_typemap;
+	g_tw_lp_typemap = &suspend_typemap;
 
 	// set the global variable and initialize each LP's type
 	g_tw_lp_types = suspend_lps;

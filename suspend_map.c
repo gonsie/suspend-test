@@ -9,16 +9,17 @@ tw_peid suspend_map(tw_lpid gid){
   return (tw_peid) gid / g_tw_nlp;
 }
 
-/*
 // Multiple LP Types mapping function
 //    Given an LP's GID
 //    Return the index in the LP type array (defined in suspend_main.c)
 tw_lpid suspend_typemap (tw_lpid gid) {
-  // since this model has one type
-  // always return index of 1st LP type
-  return 0;
+  // LP0: increment type
+  // LP1: decrement type
+  // LPn: receiver type
+  if (gid == 0) return 0;
+  if (gid == 1) return 1;
+  return 2;
 }
-*/
 
 /*
 //Custom mapping functions are used so
