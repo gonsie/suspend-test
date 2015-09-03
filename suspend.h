@@ -8,16 +8,15 @@
 
 //Example enumeration of message type... could also use #defines
 typedef enum {
-  HELLO,
-  GOODBYE,
+  WAKEUP,
+  INCREMENT,
+  DECREMENT,
 } message_type;
 
 //Message struct
 //   this contains all data sent in an event
 typedef struct {
   message_type type;
-  double contents;
-  tw_lpid sender;
 } message;
 
 
