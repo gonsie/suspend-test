@@ -70,6 +70,7 @@ extern void receiver_final(receiver_state *s, tw_lp *lp);
 // All lp types can have same mapping
 // found in suspend_map.c
 extern tw_peid suspend_map(tw_lpid gid);
+extern tw_lpid suspend_typemap(tw_lpid gid);
 
 /*
 //Custom mapping prototypes
