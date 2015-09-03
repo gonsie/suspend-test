@@ -17,6 +17,7 @@ typedef enum {
 //   this contains all data sent in an event
 typedef struct {
   message_type type;
+  int value;
 } message;
 
 

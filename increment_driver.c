@@ -37,6 +37,7 @@ void increment_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
     tw_event *e = tw_event_new(i+2, 1, lp);
     message *msg = tw_event_data(e);
     msg->type = INCREMENT;
+    msg->value = s->increment_value;
     tw_event_send(e);
   }
 }
