@@ -1,24 +1,19 @@
-//The C mapping for a ROSS model
-//This file includes:
-// - the required LP GID -> PE mapping function
-// - Commented out example of LPType map (when there multiple LP types)
-// - Commented out example of one set of custom mapping functions:
-//   - setup function to place LPs and KPs on PEs
-//   - local map function to find LP in local PE's array
+//Elsa Gonsiorowski
+//September 3, 2015
 
-#include "model.h"
+#include "suspend.h"
 
 //Given an LP's GID (global ID)
 //return the PE (aka node, MPI Rank)
-tw_peid model_map(tw_lpid gid){
+tw_peid suspend_map(tw_lpid gid){
   return (tw_peid) gid / g_tw_nlp;
 }
 
 /*
 // Multiple LP Types mapping function
 //    Given an LP's GID
-//    Return the index in the LP type array (defined in model_main.c)
-tw_lpid model_typemap (tw_lpid gid) {
+//    Return the index in the LP type array (defined in suspend_main.c)
+tw_lpid suspend_typemap (tw_lpid gid) {
   // since this model has one type
   // always return index of 1st LP type
   return 0;
@@ -35,7 +30,7 @@ extern unsigned int nkp_per_pe;
 
 //This function maps LPs to KPs on PEs and is called at the start
 //This example is the same as Linear Mapping
-void model_custom_mapping(void){
+void suspend_custom_mapping(void){
   tw_pe *pe;
   int nlp_per_kp;
   int lp_id, kp_id;
@@ -86,7 +81,7 @@ void model_custom_mapping(void){
 }
 
 //Given a gid, return the local LP (global id => local id mapping)
-tw_lp * model_mapping_to_lp(tw_lpid){
+tw_lp * suspend_mapping_to_lp(tw_lpid){
   int local_id = lp_id - g_tw_offset;
   return g_tw_lp[id];
 }

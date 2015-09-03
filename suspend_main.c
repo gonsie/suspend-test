@@ -1,24 +1,20 @@
-//The C main file for a ROSS model
-//This file includes:
-// - definition of the LP types
-// - command line argument setup
-// - a main function
+//Elsa Gonsiorowski
+//September 3, 2015
 
-//includes
 #include "ross.h"
-#include "model.h"
+#include "suspend.h"
 
 // Define LP types
 //   these are the functions called by ROSS for each LP
 //   multiple sets can be defined (for multiple LP types)
-tw_lptype model_lps[] = {
+tw_lptype suspend_lps[] = {
   {
-    (init_f) model_init,
+    (init_f) suspend_init,
     (pre_run_f) NULL,
-    (event_f) model_event,
-    (revent_f) model_event_reverse,
-    (final_f) model_final,
-    (map_f) model_map,
+    (event_f) suspend_event,
+    (revent_f) suspend_event_reverse,
+    (final_f) suspend_final,
+    (map_f) suspend_map,
     sizeof(state)
   },
   { 0 },
@@ -28,21 +24,21 @@ tw_lptype model_lps[] = {
 unsigned int setting_1 = 0;
 
 //add your command line opts
-const tw_optdef model_opts[] = {
-	TWOPT_GROUP("ROSS Model"),
+const tw_optdef suspend_opts[] = {
+	TWOPT_GROUP("Suspend Test"),
 	TWOPT_UINT("setting_1", setting_1, "first setting for this model"),
 	TWOPT_END(),
 };
 
 
 //for doxygen
-#define model_main main
+#define suspend_main main
 
-int model_main (int argc, char* argv[]) {
+int suspend_main (int argc, char* argv[]) {
 	int i;
 	int num_lps_per_pe;
 
-	tw_opt_add(model_opts);
+	tw_opt_add(suspend_opts);
 	tw_init(&argc, &argv);
 
 	//Do some error checking?
@@ -51,8 +47,8 @@ int model_main (int argc, char* argv[]) {
 	//Custom Mapping
 	/*
 	g_tw_mapping = CUSTOM;
-	g_tw_custom_initial_mapping = &model_custom_mapping;
-	g_tw_custom_lp_global_to_local_map = &model_mapping_to_lp;
+	g_tw_custom_initial_mapping = &suspend_custom_mapping;
+	g_tw_custom_lp_global_to_local_map = &suspend_mapping_to_lp;
 	*/
 
 	//Useful ROSS variables and functions
@@ -75,10 +71,10 @@ int model_main (int argc, char* argv[]) {
 
 	// IF there are multiple LP types
 	//    you should define the mapping of GID -> lptype index
-	//g_tw_lp_typemap = &model_typemap;
+	//g_tw_lp_typemap = &suspend_typemap;
 
 	// set the global variable and initialize each LP's type
-	g_tw_lp_types = model_lps;
+	g_tw_lp_types = suspend_lps;
 	tw_lp_setup_types();
 
 	// Do some file I/O here? on a per-node (not per-LP) basis

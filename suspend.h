@@ -1,12 +1,8 @@
-//The header file template for a ROSS model
-//This file includes:
-// - the state and message structs
-// - extern'ed command line arguments
-// - custom mapping function prototypes (if needed)
-// - any other needed structs, enums, unions, or #defines
+//Elsa Gonsiorowski
+//September 3, 2015
 
-#ifndef _model_h
-#define _model_h
+#ifndef _suspend_h
+#define _suspend_h
 
 #include "ross.h"
 
@@ -39,22 +35,22 @@ extern unsigned int setting_1;
 
 //Global variables used by both main and driver
 // - this defines the LP types
-extern tw_lptype model_lps[];
+extern tw_lptype suspend_lps[];
 
 //Function Declarations
-// defined in model_driver.c:
-extern void model_init(state *s, tw_lp *lp);
-extern void model_event(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
-extern void model_event_reverse(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
-extern void model_final(state *s, tw_lp *lp);
-// defined in model_map.c:
-extern tw_peid model_map(tw_lpid gid);
+// defined in suspend_driver.c:
+extern void suspend_init(state *s, tw_lp *lp);
+extern void suspend_event(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
+extern void suspend_event_reverse(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
+extern void suspend_final(state *s, tw_lp *lp);
+// defined in suspend_map.c:
+extern tw_peid suspend_map(tw_lpid gid);
 
 /*
 //Custom mapping prototypes
-void model_cutom_mapping(void);
-tw_lp * model_mapping_to_lp(tw_lpid lpid);
-tw_peid model_map(tw_lpid gid);
+void suspend_cutom_mapping(void);
+tw_lp * suspend_mapping_to_lp(tw_lpid lpid);
+tw_peid suspend_map(tw_lpid gid);
 */
 
 #endif
