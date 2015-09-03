@@ -40,6 +40,12 @@ void increment_event (increment_state *s, tw_bf *bf, message *in_msg, tw_lp *lp)
     msg->value = s->increment_value;
     tw_event_send(e);
   }
+
+  // Wakeup self
+  tw_event *e = tw_event_new(self, 2, lp);
+  message *msg = tw_event_data(e);
+  msg->type = WAKEUP;
+  tw_event_send(e);
 }
 
 //Reverse Event Handler
