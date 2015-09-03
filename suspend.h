@@ -50,22 +50,22 @@ extern tw_lptype suspend_lps[];
 // Each LP type gets its own set of functions
 
 // defined in increment_driver.c:
-extern void increment_init(state *s, tw_lp *lp);
-extern void increment_event(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
-extern void increment_event_reverse(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
-extern void increment_final(state *s, tw_lp *lp);
+extern void increment_init(increment_state *s, tw_lp *lp);
+extern void increment_event(increment_state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
+extern void increment_event_reverse(increment_state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
+extern void increment_final(increment_state *s, tw_lp *lp);
 
 // defined in decrement_driver.c:
-extern void decrement_init(state *s, tw_lp *lp);
-extern void decrement_event(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
-extern void decrement_event_reverse(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
-extern void decrement_final(state *s, tw_lp *lp);
+extern void decrement_init(decrement_state *s, tw_lp *lp);
+extern void decrement_event(decrement_state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
+extern void decrement_event_reverse(decrement_state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
+extern void decrement_final(decrement_state *s, tw_lp *lp);
 
 // defined in receiver_driver.c:
-extern void receiver_init(state *s, tw_lp *lp);
-extern void receiver_event(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
-extern void receiver_event_reverse(state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
-extern void receiver_final(state *s, tw_lp *lp);
+extern void receiver_init(receiver_state *s, tw_lp *lp);
+extern void receiver_event(receiver_state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
+extern void receiver_event_reverse(receiver_state *s, tw_bf *bf, message *in_msg, tw_lp *lp);
+extern void receiver_final(receiver_state *s, tw_lp *lp);
 
 // All lp types can have same mapping
 // found in suspend_map.c

@@ -8,7 +8,7 @@
 //Init function
 // - called once for each LP
 // ! LP can only send messages to itself during init !
-void receiver_init (state *s, tw_lp *lp) {
+void receiver_init (receiver_state *s, tw_lp *lp) {
   int self = lp->gid;
 
   // init state data
@@ -19,7 +19,7 @@ void receiver_init (state *s, tw_lp *lp) {
 }
 
 //Forward event handler
-void receiver_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
+void receiver_event (receiver_state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int self = lp->gid;
 
   s->forward_event_count++;
@@ -42,7 +42,7 @@ void receiver_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 }
 
 //Reverse Event Handler
-void receiver_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
+void receiver_event_reverse (receiver_state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int self = lp->gid;
 
   s->reverse_event_count++;
@@ -65,7 +65,7 @@ void receiver_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 }
 
 //report any final statistics for this LP
-void receiver_final (state *s, tw_lp *lp){
+void receiver_final (receiver_state *s, tw_lp *lp){
   int self = lp->gid;
   printf("%d received %d forward and %d reverse messages: count is %d\n", self, s->forward_event_count, s->reverse_event_count, s->count);
 }

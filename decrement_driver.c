@@ -8,7 +8,7 @@
 //Init function
 // - called once for each LP
 // ! LP can only send messages to itself during init !
-void decrement_init (state *s, tw_lp *lp) {
+void decrement_init (decrement_state *s, tw_lp *lp) {
   int self = lp->gid;
 
   // init state data
@@ -23,11 +23,11 @@ void decrement_init (state *s, tw_lp *lp) {
 }
 
 //Forward event handler
-void decrement_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
+void decrement_event (decrement_state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   int self = lp->gid;
 
   if (in_msg->type != WAKEUP) {
-    tw_error(TW_LOC, "Decrement LP received wrong message type")
+    tw_error(TW_LOC, "Decrement LP received wrong message type");
   }
 
   s->round_count++;
@@ -43,13 +43,13 @@ void decrement_event (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
 }
 
 //Reverse Event Handler
-void decrement_event_reverse (state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
+void decrement_event_reverse (decrement_state *s, tw_bf *bf, message *in_msg, tw_lp *lp) {
   // there is nothing to do here
   return;
 }
 
 //report any final statistics for this LP
-void decrement_final (state *s, tw_lp *lp){
+void decrement_final (decrement_state *s, tw_lp *lp){
   int self = lp->gid;
   printf("%d sent %d rounds of decrement messages, each with value %d\n", self, s->round_count, s->decrement_value);
 }
