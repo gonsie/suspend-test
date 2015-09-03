@@ -34,6 +34,9 @@ typedef struct {
 
 typedef struct {
 	int count;
+	int forward_event_count; // DON'T ROLL THIS BACK! (value is nondeterministic)
+	int reverse_event_count; // DON'T ROLL THIS BACK! (value is nondeterministic)
+	int net_event_count;
 } receiver_state;
 
 //Command Line Argument declarations
