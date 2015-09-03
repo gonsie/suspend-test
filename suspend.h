@@ -23,11 +23,16 @@ typedef struct {
 //State struct
 //   this defines the state of each LP
 typedef struct {
-  int rcvd_count_H;
-  int rcvd_count_G;
-  double value;
-} state;
+	int increment_value;
+} increment_state;
 
+typedef struct {
+	int decrement_value;
+} decrement_state;
+
+typedef struct {
+	int count;
+} receiver_state;
 
 //Command Line Argument declarations
 extern unsigned int setting_1;
